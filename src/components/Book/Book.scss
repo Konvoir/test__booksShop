@@ -1,0 +1,10 @@
+.book__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.book__column{
+    &:first-child{
+    display: flex;
+    }
+}
