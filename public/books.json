@@ -13,9 +13,9 @@
     },
     {
         "id": 3,
-        "name": "Chanel",
+        "name": "Kuiv",
         "price": 150,
-        "category": "parfum"
+        "category": "tourizm"
     },
     {
         "id": 4,
@@ -43,6 +43,12 @@
     },
     {
         "id": 8,
+        "name": "Tiger",
+        "price": 100,
+        "category": "animals"
+    },
+    {
+        "id": 9,
         "name": "Tea",
         "price": 110,
         "category": "food"

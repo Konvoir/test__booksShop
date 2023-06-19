@@ -21,7 +21,10 @@ async function getData(){
 }
 
 const filterBooks = (value) =>{
-console.log(value)
+  const filteredBooks = booksData.filter(book =>{
+    return book.category.toLowerCase().includes(value.toLowerCase())
+  })
+  setBooksData(filteredBooks)
 }
   
   return (
