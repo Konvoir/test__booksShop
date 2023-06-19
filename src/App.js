@@ -3,10 +3,13 @@ import axios from 'axios';
 import './App.css';
 import Book from "./components/Book/Book";
 import BookFilter from "./components/BookFilter/BookFilter";
+import Cart from "./components/Cart/Cart";
 
 function App() {
 const [booksData, setBooksData] = React.useState([])
 const [orderBy, setOrderBy] = React.useState(false)
+const [totalOrders, setTotalOrders] = React.useState([])
+const [orderPrice, setOrderPrice] = React.useState(0)
 
 React.useEffect(() =>{
   getData()
@@ -40,8 +43,13 @@ const sortBooks = () => {
     setBooksData(sortedDataReverse)
     setOrderBy(!orderBy)
   }
-
 }
+
+  const totalPrice = (book) => {
+      totalOrders.push(book)
+      let ordersSum = totalOrders.reduce((sum, current) => sum + current.price, 0)
+  setOrderPrice(ordersSum)
+    }
   
   return (
     <div className="wrapper">
@@ -52,9 +60,12 @@ const sortBooks = () => {
           </div>
 
           {booksData.map(book => (
-            <Book key={book.id} book={book} />
+            <Book totalPrice={totalPrice} key={book.id} book={book} />
           ))}
 
+        <div className="app__cart">
+              <Cart orderPrice={orderPrice} />
+        </div>
 
         </div>
       </div>
