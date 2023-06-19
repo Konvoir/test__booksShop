@@ -3,14 +3,14 @@ import './BookFilter.scss';
 import arrowUp from '../../assets/up-arrow.svg';
 import arrowDown from '../../assets/down__arrow.svg';
 
-const BookFilter = ({filterBooks, sortBooks}) => {
+const BookFilter = ({filterBooks, sortBooks, orderBy}) => {
     const onSelectChange = (e) =>{
             filterBooks(e.target.value)
     }
     return (
         <div className="book__filter">
-            <div>
-                <p onClick={() => sortBooks()} >orderBy</p><img className="arrow" src={arrowDown} color="black" alt="arrowUp" />
+            <div onClick={() => sortBooks()}>
+                <p >orderBy</p><img className="arrow" src={orderBy ? arrowUp: arrowDown} alt="arrow" />
             </div>
             
             <div>

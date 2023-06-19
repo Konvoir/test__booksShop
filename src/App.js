@@ -6,19 +6,20 @@ import BookFilter from "./components/BookFilter/BookFilter";
 
 function App() {
 const [booksData, setBooksData] = React.useState([])
+const [orderBy, setOrderBy] = React.useState(false)
 
 React.useEffect(() =>{
   getData()
 },[])
 
 async function getData(){
-  await axios.get('./books.json')
-  .then(response =>{
+  try{
+  let response = await axios.get('./books.json')
     setBooksData(response.data)
-  })
-  .catch(err =>{
+  }
+  catch(err) {
     console.log(err)
-  })
+  }
 }
 
 const filterBooks = (value) =>{
@@ -27,13 +28,27 @@ const filterBooks = (value) =>{
   })
   setBooksData(filteredBooks)
 }
+
+const sortBooks = () => {
+  const copyData = booksData.slice()
+  if (orderBy) {
+    const sortedData = copyData.sort((a, b) => a.price > b.price ? 1 : -1)
+    setBooksData(sortedData)
+    setOrderBy(!orderBy)
+  }else{
+    const sortedDataReverse = copyData.sort((a, b) => a.price < b.price ? 1 : -1)
+    setBooksData(sortedDataReverse)
+    setOrderBy(!orderBy)
+  }
+
+}
   
   return (
     <div className="wrapper">
       <div className="app">
         <div className="app__body">
           <div>
-            <BookFilter filterBooks={filterBooks} />
+            <BookFilter orderBy={orderBy} sortBooks={sortBooks} filterBooks={filterBooks} />
           </div>
 
           {booksData.map(book => (
