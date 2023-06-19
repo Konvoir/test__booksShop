@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import Book from "./components/Book/Book";
+import BookFilter from "./components/BookFilter/BookFilter";
 
 function App() {
 const [booksData, setBooksData] = React.useState([])
@@ -18,12 +19,19 @@ async function getData(){
     console.log(err)
   })
 }
-console.log(booksData)
+
+const filterBooks = (value) =>{
+console.log(value)
+}
   
   return (
     <div className="wrapper">
       <div className="app">
         <div className="app__body">
+          <div>
+            <BookFilter filterBooks={filterBooks} />
+          </div>
+
           {booksData.map(book => (
             <Book key={book.id} book={book} />
           ))}
