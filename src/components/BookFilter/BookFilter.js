@@ -9,8 +9,8 @@ const BookFilter = ({filterBooks, sortBooks, orderBy}) => {
     }
     return (
         <div className="book__filter">
-            <div onClick={() => sortBooks()}>
-                <p >orderBy</p><img className="arrow" src={orderBy ? arrowUp: arrowDown} alt="arrow" />
+            <div className="book__filter__title" onClick={() => sortBooks()}>
+                <p >orderBy</p><span><img className="arrow" src={orderBy ? arrowUp: arrowDown} alt="arrow" /></span>
             </div>
             
             <div>

@@ -1,6 +1,14 @@
-.arrow{
-    color: black;
-    width: 30px;
+.book__filter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img {
+        width: 25px;
+        height: 25px;
 
-    // rotate
+    }
+    &__title{
+        display: flex;
+        align-items: center;
+    }
 }
