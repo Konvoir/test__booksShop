@@ -46,8 +46,8 @@ const sortBooks = () => {
 }
 
   const totalPrice = (book) => {
-      totalOrders.push(book)
-      let ordersSum = totalOrders.reduce((sum, current) => sum + current.price, 0)
+    setTotalOrders([...totalOrders, book])  
+    let ordersSum = totalOrders.reduce((sum, current) => sum + current.price, 0)
   setOrderPrice(ordersSum)
     }
   
